@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Daily Success Tracker
+
+A minimalist PWA habit tracker where you rate your day as successful (👍) or not (👎) daily. Entries are logged to a calendar view with visual indicators.
+
+## Features
+
+- 📅 Calendar view with color-coded success/failure days
+- 🔥 Streak tracking for consecutive successful days
+- 🌓 Dark/light mode toggle
+- 📱 PWA - installable on mobile devices
+- 🔐 User authentication with Clerk
+- ⚡ Type-safe API with JStack + Hono
+- 🗄️ PostgreSQL database with Drizzle ORM
+
+## Tech Stack
+
+- **Framework**: Next.js 16 + React 19
+- **API Layer**: JStack 1.1.1 (type-safe, built on Hono)
+- **Database**: Drizzle ORM + PostgreSQL (Neon recommended)
+- **Auth**: Clerk 6.x
+- **Data Fetching**: TanStack Query 5.x
+- **UI**: Shadcn/UI + Tailwind CSS 4
+- **Validation**: Zod 4.x
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 20+
+- PostgreSQL database (or [Neon](https://neon.tech) account)
+- [Clerk](https://clerk.com) account
+
+### 1. Install Dependencies
+
+```bash
+npm install
+```
+
+### 2. Configure Environment Variables
+
+Edit `.env.local` and fill in your values:
+
+```bash
+# Clerk Authentication
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_xxx
+CLERK_SECRET_KEY=sk_test_xxx
+
+# Database (Neon PostgreSQL)
+DATABASE_URL=postgresql://user:password@host/database?sslmode=require
+```
+
+### 3. Setup Database
+
+Push the database schema:
+
+```bash
+npm run db:push
+```
+
+### 4. Run Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to see the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Vercel (Recommended)
 
-## Learn More
+1. Push your code to GitHub
+2. Import the project in [Vercel](https://vercel.com)
+3. Add environment variables in Vercel dashboard
+4. Deploy!
 
-To learn more about Next.js, take a look at the following resources:
+## Scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+- `npm run db:push` - Push schema to database
+- `npm run db:studio` - Open Drizzle Studio
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT
